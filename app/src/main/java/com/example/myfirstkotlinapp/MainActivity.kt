@@ -20,10 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstKotlinAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                            name = "Protick",
-                            modifier = Modifier.padding(innerPadding)
-                    )
+                    Greeting(name = "Protick", modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -33,7 +30,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-            text = "Hello $name!",
+            text = "WELCOME $name!",
             modifier = modifier
     )
 }
@@ -42,6 +39,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     MyFirstKotlinAppTheme {
-        Greeting("Android")
+        Greeting("PROTICK")
     }
 }
