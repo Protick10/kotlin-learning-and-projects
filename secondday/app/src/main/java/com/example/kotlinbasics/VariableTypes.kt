@@ -23,5 +23,31 @@ fun main(){
     var isMarried: Boolean = true
     var myName: String = "Protick Saha"
 
+    val myTrue = true
+    val myFalse = false
 
+
+    val myChar = "A"
+
+    println(myChar)
+
+    val myCharUnicode = '\u00AE'
+    println(myCharUnicode)
+
+    val str = "Hello, World!"
+    val str1 = "Hello, World2!"
+
+    println(str)
+
+    for (char in str) {
+        println(char)
+    }
+
+
+    println(str.uppercase())
+
+    println(str + str1)
+    println(str.plus(str1))
+
+    println(str + " " + "pro")
 }
