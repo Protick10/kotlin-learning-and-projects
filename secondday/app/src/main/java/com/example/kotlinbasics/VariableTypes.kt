@@ -50,4 +50,19 @@ fun main(){
     println(str.plus(str1))
 
     println(str + " " + "pro")
+
+
+    //readln
+   println("Enter your age in full years")
+   val age = readln().toInt()
+
+    if (age >= 18){
+
+        println("You are eligible to vote")
+    }
+
+    else{
+
+        println("You are not eligible to vote")
+    }
 }
