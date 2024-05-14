@@ -17,4 +17,22 @@ fun main(){
 
     println(c)
 
+
+
+    var count = 0
+
+    while (count < 5){
+        println("count = $count")
+        count++
+    }
+
+    var userinput = readln()
+
+    while (userinput == "1"){
+        println("You entered 1")
+        userinput = readln()
+    }
+    println("loop ended")
+
+
 }

@@ -6,7 +6,16 @@ fun main(){
     var userChoice = ""
 
     println("Enter your choice: Rock, Paper or Scissors")
-    userChoice = readLine().toString()
+    userChoice = readlnOrNull().toString()
+    while (userChoice != "Rock" && userChoice != "Paper" && userChoice != "Scissors"){
+        userChoice = readlnOrNull().toString()
+        if (userChoice == "Rock" || userChoice == "Paper" || userChoice == "Scissors"){
+            break
+        } else {
+            println("Please enter a valid choice: Rock, Paper or Scissors")
+        }
+    }
+//
 
     val random = (1..3).random()
 
