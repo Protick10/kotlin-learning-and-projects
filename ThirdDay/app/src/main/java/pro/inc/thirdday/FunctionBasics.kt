@@ -1,18 +1,43 @@
 package pro.inc.thirdday
 
+data class CoffeeDetails(val name : String,
+                         val sugerCount : Int,
+                         val size : Int,
+                         val creamAmount : Int)
+
 fun main(){
-    makeCoffee("immy",4)
-    makeCoffee("roy",0)
-    makeCoffee("jason",1)
 
-    println("enter number1: ")
-    val num1 = readLine()!!.toInt()
-    println("enter number2: ")
-    val num2 = readLine()!!.toInt()
+    val coffeeForMe = CoffeeDetails("immy", 4, 2, 1)
 
-    val sum = add(num1, num2)
-    println("Sum is $sum")
+
+    makeCoffee(coffeeForMe)
+
+
+//    makeCoffee("immy",4)
+//    makeCoffee("roy",0)
+//    makeCoffee("jason",1)
+//
+//    println("enter number1: ")
+//    val num1 = readLine()!!.toInt()
+//    println("enter number2: ")
+//    val num2 = readLine()!!.toInt()
+//
+//    val sum = add(num1, num2)
+//    println("Sum is $sum")
 }
+
+fun makeCoffee(coffeeDetails: CoffeeDetails){
+
+    if (coffeeDetails.sugerCount==0){
+        println("Making coffee without sugar for ${coffeeDetails.name}")}
+    else if (coffeeDetails.sugerCount==1){
+        println("Making coffee with ${coffeeDetails.sugerCount} spoon of sugar for ${coffeeDetails.name}")
+    }
+    else{
+        println("Making coffee with ${coffeeDetails.sugerCount} spoons of sugar for ${coffeeDetails.name}")
+    }
+
+
 
 
 //function to make coffee
@@ -24,16 +49,16 @@ fun main(){
 //    println("Coffee is ready")
 //}
 
-fun makeCoffee(name : String, sugerCount : Int){
-
-    if (sugerCount==0){
-        println("Making coffee without sugar for $name")}
-    else if (sugerCount==1){
-        println("Making coffee with $sugerCount spoon of sugar for $name")
-    }
-    else{
-        println("Making coffee with $sugerCount spoons of sugar for $name")
-    }
+//fun makeCoffee(name : String, sugerCount : Int){
+//
+//    if (sugerCount==0){
+//        println("Making coffee without sugar for $name")}
+//    else if (sugerCount==1){
+//        println("Making coffee with $sugerCount spoon of sugar for $name")
+//    }
+//    else{
+//        println("Making coffee with $sugerCount spoons of sugar for $name")
+//    }
 //    else{
 //        println("Making coffee with $sugerCount spoons of sugar")
 //    }
