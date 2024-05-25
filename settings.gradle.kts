@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "fourthDay"
 include(":app")
+include(":app")
  
