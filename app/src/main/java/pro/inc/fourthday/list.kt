@@ -27,4 +27,13 @@ fun main(){
     else{
         println("You don't have RAM in your shopping list")
     }
+
+
+    for (item in shoppingListMutable){
+        println(item)
+
+        if (item == "RAM"){
+            break
+        }
+    }
 }
