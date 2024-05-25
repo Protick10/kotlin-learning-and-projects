@@ -29,11 +29,18 @@ fun main(){
     }
 
 
-    for (item in shoppingListMutable){
-        println(item)
+//    for (item in shoppingListMutable){
+//        println(item)
+//
+//        if (item == "RAM"){
+//            break
+//        }
+//    }
 
-        if (item == "RAM"){
-            break
-        }
+
+    for (item in 0 until shoppingList.size){
+        println(item)
+        println(shoppingList[item])
     }
+
 }
