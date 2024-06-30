@@ -20,7 +20,7 @@ import pro.inc.navigatingscreen.ui.theme.NavigatingScreenTheme
 
 @Composable
 
-fun SecondScreen(navigationToFirstScreen:() -> Unit) {
+fun SecondScreen(navigationToThirdScreen:() -> Unit) {
 //    var name = remember {
 //        mutableStateOf("")
 //
@@ -48,7 +48,7 @@ fun SecondScreen(navigationToFirstScreen:() -> Unit) {
 //            modifier = Modifier.padding(16.dp))
 
         Button(onClick = {
-             navigationToFirstScreen()
+            navigationToThirdScreen()
         }) {
             Text(text ="Navigate to first screen",
                 modifier = Modifier.padding(16.dp))
