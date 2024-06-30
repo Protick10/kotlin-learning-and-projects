@@ -12,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -20,6 +21,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import pro.inc.navigatingscreen.ui.theme.NavigatingScreenTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,6 +33,31 @@ class MainActivity : ComponentActivity() {
         setContent {
             NavigatingScreenTheme {
 
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        MyApp()
+                    }
+
+            }
+        }
+    }
+}
+
+@Composable
+fun MyApp(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "FirstScreen") {
+        composable("FirstScreen") {
+            FirstScreen{
+                navController.navigate("SecondScreen")
+
+            }
+        }
+        composable("SecondScreen") {
+            SecondScreen{
+                navController.navigate("FirstScreen")
             }
         }
     }

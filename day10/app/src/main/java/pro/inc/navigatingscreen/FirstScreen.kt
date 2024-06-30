@@ -19,7 +19,7 @@ import pro.inc.navigatingscreen.ui.theme.NavigatingScreenTheme
 
 @Composable
 
-fun FirstScreen() {
+fun FirstScreen(navigationToSecondScreen:() -> Unit) {
     var name = remember {
         mutableStateOf("")
 
@@ -41,7 +41,9 @@ fun FirstScreen() {
             label = { Text("Enter your name") },
             modifier = Modifier.padding(16.dp))
 
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+            navigationToSecondScreen()
+        }) {
             Text(text ="Navigate to second screen",
                 modifier = Modifier.padding(16.dp))
         }
@@ -53,6 +55,6 @@ fun FirstScreen() {
 @Composable
 fun GreetingPreview() {
     NavigatingScreenTheme {
-        FirstScreen()
+        FirstScreen({})
     }
 }
