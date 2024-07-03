@@ -19,11 +19,17 @@ import pro.inc.navigatingscreen.ui.theme.NavigatingScreenTheme
 
 @Composable
 
-fun FirstScreen(navigationToSecondScreen:() -> Unit) {
+fun FirstScreen(navigationToSecondScreen:(String, Int) -> Unit) {
     var name = remember {
         mutableStateOf("")
 
     }
+
+    var age = remember {
+        mutableStateOf("")
+    }
+
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -41,8 +47,21 @@ fun FirstScreen(navigationToSecondScreen:() -> Unit) {
             label = { Text("Enter your name") },
             modifier = Modifier.padding(16.dp))
 
+        OutlinedTextField(value = age.value, onValueChange = {
+            age.value = it
+        },
+
+        )
+
+
         Button(onClick = {
-            navigationToSecondScreen()
+            val ageInt = try {
+                age.value.toInt()
+            } catch (e: NumberFormatException) {
+                // handle the exception (e.g., show a toast message to the user)
+                25
+            }
+            navigationToSecondScreen(name.value, ageInt)
         }) {
             Text(text ="Navigate to second screen",
                 modifier = Modifier.padding(16.dp))
@@ -51,10 +70,10 @@ fun FirstScreen(navigationToSecondScreen:() -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NavigatingScreenTheme {
-        FirstScreen({})
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    NavigatingScreenTheme {
+//        FirstScreen({})
+//    }
+//}

@@ -20,7 +20,7 @@ import pro.inc.navigatingscreen.ui.theme.NavigatingScreenTheme
 
 @Composable
 
-fun SecondScreen(navigationToThirdScreen:() -> Unit) {
+fun SecondScreen(name: String, age:Int, navigationToThirdScreen:() -> Unit) {
 //    var name = remember {
 //        mutableStateOf("")
 //
@@ -36,7 +36,7 @@ fun SecondScreen(navigationToThirdScreen:() -> Unit) {
             style = MaterialTheme.typography.headlineMedium
         )
 
-        Text("Welcome",
+        Text("Welcome $name , $age",
             modifier = Modifier.padding(16.dp),
             style = MaterialTheme.typography.headlineLarge
             )
@@ -61,6 +61,6 @@ fun SecondScreen(navigationToThirdScreen:() -> Unit) {
 @Composable
 fun SecondGreetingPreview() {
     NavigatingScreenTheme {
-        SecondScreen({})
+        SecondScreen("Protick",25,{})
     }
 }

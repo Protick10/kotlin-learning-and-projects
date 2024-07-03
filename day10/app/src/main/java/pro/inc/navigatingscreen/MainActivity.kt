@@ -21,9 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import pro.inc.navigatingscreen.ui.theme.NavigatingScreenTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,13 +52,18 @@ fun MyApp(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "FirstScreen") {
         composable("FirstScreen") {
-            FirstScreen{
-                navController.navigate("SecondScreen")
+            FirstScreen{name, age ->
+                navController.navigate("SecondScreen/$name/$age")
 
             }
         }
-        composable("SecondScreen") {
-            SecondScreen{
+        composable("SecondScreen/{name}/{age}",
+            arguments = listOf(navArgument("name") {}, navArgument("age"){})
+            ){
+             val name = it.arguments?.getString("name") ?: "No Name"  // default value
+             val age = it.arguments?.getInt("age") ?: 21  // default value
+
+            SecondScreen(name,age){
 //                navController.navigate("FirstScreen")
                 navController.navigate("ThirdScreen")
             }
