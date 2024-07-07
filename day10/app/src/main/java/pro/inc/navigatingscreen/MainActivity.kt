@@ -58,7 +58,7 @@ fun MyApp(){
             }
         }
         composable("SecondScreen/{name}/{age}",
-            arguments = listOf(navArgument("name") {}, navArgument("age"){})
+            arguments = listOf(navArgument("name", ) {}, navArgument("age"){})
             ){
              val name = it.arguments?.getString("name") ?: "No Name"  // default value
              val age = it.arguments?.getInt("age") ?: 21  // default value
