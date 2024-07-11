@@ -14,16 +14,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
+
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
 import pro.inc.locationapp.ui.theme.LocationAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,13 +32,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val viewModel: LocationViewModel = viewModel()
             LocationAppTheme {
                 Surface(
                     color = MaterialTheme.colorScheme.background,
                     modifier = Modifier.fillMaxSize()
 
                 ) {
-                    MyApp()
+                    MyApp(viewModel)
 
                 }
             }
@@ -46,16 +48,17 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyApp(){
+fun MyApp(viewModel: LocationViewModel){
     val context = LocalContext.current //Basically what it says is give me the context of the current activity that I'm in.
     val locationUtils = LocationUtils(context)
-    LocationDisplay(locationUtils, context)
+    LocationDisplay(locationUtils,viewModel, context)
 
 }
 
 @Composable
 fun LocationDisplay(
     locationUtils: LocationUtils,
+    viewModel: LocationViewModel,
     context: Context
 ){
 
