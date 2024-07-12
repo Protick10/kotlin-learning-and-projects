@@ -62,6 +62,12 @@ fun LocationDisplay(
     context: Context
 ){
 
+    val location = viewModel.location.value
+
+    val address = location?.let { //let is a scope function that allows us to do something with the object that is not null. let unwraps the object and passes it to the lambda.
+        locationUtils.reverseGeocodeLocation(location)
+    }
+
 
     //this could be used for any permissions that could be requested
     val requestPermissionLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestMultiplePermissions(),
@@ -70,7 +76,8 @@ fun LocationDisplay(
                 &&
                 permissions[android.Manifest.permission.ACCESS_COARSE_LOCATION] == true){
 
-                //have access to location
+                // permission granted. update the location
+                locationUtils.requestLocationUpdates(viewModel)  //So we're just requesting the location updates. so it will update our view model with the location.
 
             }else{
 
@@ -117,11 +124,25 @@ fun LocationDisplay(
         verticalArrangement = Arrangement.Center
 
     ) {
-        Text("Location not available")
+
+        if (location != null){
+            Text("Latitude: ${location.latitude}",
+                modifier = Modifier.padding(8.dp)
+                )
+            Text("Longitude: ${location.longitude}",
+                modifier = Modifier.padding(8.dp)
+                )
+            Text("Address: $address")}
+        else{
+            Text("Location not available")
+        }
+
 
         Button(onClick = {
             if(locationUtils.hasLocationPermission(context)){
                 // permission already granted. update the location
+
+                locationUtils.requestLocationUpdates(viewModel)
             }
             else{
                 // request permission
